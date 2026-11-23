@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mukhibilloh Abdurakhimov</title>
+<meta name="description" content="Mukhibilloh Abdurakhimov — applied mathematician, Assistant Professor and International Coordinator at Fergana State Technical University. CV, publications, lessons and teaching materials.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, precise academic home page, warm enough to feel personal.
+   IDEA: a Fergana atlas (ikat) silk woven out of a probability distribution — maths meets home.
+   PICTURE: a Monte Carlo histogram drawn as ikat stripes under its density curve, with sample dots.
+   COLOUR and TYPE: white ground, indigo ink and band, pomegranate accent, turquoise tile support; Newsreader + Inter.
+   LAYOUT: sticky nav, hero with bio and picture, then full-width bands: research, publications, teaching, materials, CV, contact. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0f1030);--bg2:light-dark(#f2f2f8,#16183f);
+--ink:light-dark(#14163a,#ecebf7);--soft:light-dark(#4a4c6e,#b7b8d6);
+--indigo:light-dark(#2b2d8f,#8f92ff);--band:#23257a;--pom:light-dark(#d42a4c,#ff6b86);--tile:light-dark(#128c84,#4fd1c5);
+--line:light-dark(#dcdcea,#2c2e63)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:var(--indigo)}a:hover{color:var(--pom)}
+:focus-visible{outline:3px solid var(--pom);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;font-weight:600;line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4vw,40px);margin-bottom:8px}
+h3{font-size:21px;font-weight:500}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(40px,6vw,80px) max(5vw,16px)}
+.alt{background:var(--bg2)}
+.lede{color:var(--soft);max-width:62ch;margin:0 0 28px}
+.small{font-size:13px;color:var(--soft)}
+
+/* nav */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:16px;padding:10px max(5vw,16px);flex-wrap:wrap}
+.logo{font-family:Newsreader,serif;font-weight:600;font-size:20px;color:var(--ink);text-decoration:none;margin-right:auto}
+.logo span{color:var(--pom)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--soft);font-weight:500;font-size:15px;padding:10px 10px;border-radius:8px;min-height:44px;display:inline-flex;align-items:center}
+nav a:hover{color:var(--ink);background:var(--bg2)}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,58px);line-height:1.04;margin-bottom:14px}
+.role{font-size:18px;color:var(--indigo);font-weight:500;margin:0 0 18px}
+.hero p.bio{max-width:58ch;margin:0 0 26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--indigo)}
+.btn.p{background:var(--indigo);color:var(--bg)}.btn.p:hover{background:var(--pom);border-color:var(--pom);color:#fff}
+.btn.s{color:var(--indigo)}.btn.s:hover{border-color:var(--pom)}
+.fig{position:relative;min-height:380px;border-radius:20px;overflow:hidden;background:var(--band)}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.facts b{display:block;font-family:Newsreader,serif;font-size:26px;color:var(--ink)}
+.facts span{font-size:14px;color:var(--soft)}
+
+/* research */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px 36px}
+.topic{padding-top:16px;border-top:3px solid var(--tile)}
+.topic:nth-child(3n+2){border-color:var(--pom)}.topic:nth-child(3n){border-color:var(--indigo)}
+.topic p{margin:8px 0 0;color:var(--soft)}
+
+/* publications */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{font:inherit;font-size:15px;font-weight:500;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pubs{list-style:none;padding:0;margin:0}
+.pubs li{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.pubs .yr{font-family:Newsreader,serif;font-size:20px;color:var(--soft)}
+.pubs .t{font-weight:600}
+.pubs .m{color:var(--soft);font-size:15px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;margin-top:6px;white-space:nowrap}
+.tag.book{background:color-mix(in srgb,var(--indigo) 15%,transparent);color:var(--indigo)}
+.tag.prep{background:color-mix(in srgb,var(--pom) 14%,transparent);color:var(--pom)}
+.tag.wip{background:color-mix(in srgb,var(--tile) 16%,transparent);color:var(--tile)}
+
+/* teaching */
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--soft);font-weight:600}
+td:first-child{font-weight:600}
+
+/* materials */
+.mat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
+.course{background:var(--bg);border-radius:16px;padding:22px 22px 10px}
+.alt .course{background:var(--bg)}
+.course h3{margin-bottom:4px}
+.course ul{list-style:none;padding:0;margin:14px 0 0}
+.course li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:15px}
+.course li em{font-style:normal;font-size:13px;color:var(--soft);white-space:nowrap}
+.search{width:100%;max-width:420px;font:inherit;font-size:16px;min-height:46px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin-bottom:22px}
+
+/* cv */
+.cv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px}
+.tl{list-style:none;padding:0;margin:16px 0 0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 22px 22px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:3px solid var(--tile)}
+.tl .d{font-size:14px;color:var(--soft);white-space:nowrap}
+.tl .w{font-weight:600}
+
+/* contact */
+.contact{background:var(--band);color:#ecebf7}
+.contact h2{color:#fff}
+.contact a{color:#ffd0da}.contact a:hover{color:#fff}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;margin-top:22px}
+.cgrid b{display:block;font-size:13px;color:#b7b8e6;font-weight:600;margin-bottom:4px}
+.copy{font:inherit;font-size:13px;margin-left:8px;min-height:32px;padding:0 10px;border-radius:999px;border:1px solid #6f72d6;background:transparent;color:#ecebf7;cursor:pointer}
+footer{padding:22px max(5vw,16px);font-size:13px;color:var(--soft)}
+
+@media(max-width:820px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.fig{min-height:280px}}
+@media(max-width:600px){
+ nav a{padding:8px 8px;font-size:14px}
+ .pubs li{grid-template-columns:minmax(0,1fr);gap:4px}
+ table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}
+ .stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}
+ .stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--soft);font-weight:500}
+ .stack td:empty{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <a class="logo" href="#top">M. Abdurakhimov<span>.</span></a>
+ <nav aria-label="Sections">
+  <a href="#research">Research</a><a href="#publications">Publications</a><a href="#teaching">Teaching</a><a href="#materials">Materials</a><a href="#cv">CV</a><a href="#contact">Contact</a>
+ </nav>
+</div></header>
+
+<main id="top">
+<section class="band hero"><div class="wrap">
+ <div>
+  <h1>Mukhibilloh Abdurakhimov</h1>
+  <p class="role">Assistant Professor of Mathematics · International Coordinator, Fergana State Technical University</p>
+  <p class="bio">I am an applied mathematician based in Fergana, Uzbekistan. I build probabilistic and simulation models, especially Monte Carlo methods, for questions in groundwater, urban planning, transport and mathematical biology. I teach probability and statistics, linear algebra, higher mathematics and discrete structures. I also coordinate FSTU's international partnerships and Erasmus+ mobility.</p>
+  <div class="btns">
+   <a class="btn p" href="#cv">View CV</a>
+   <a class="btn s" href="#materials">Teaching materials</a>
+  </div>
+  <div class="facts">
+   <div><b>MSc Mathematics</b><span>University of Sussex</span></div>
+   <div><b>BSc Mech. Eng.</b><span>Fergana Polytechnic Institute</span></div>
+   <div><b>Uzbek · English · Russian</b><span>Languages</span></div>
+  </div>
+ </div>
+ <div class="fig" id="fig" role="img" aria-label="A histogram of Monte Carlo samples drawn as ikat-style silk stripes beneath a smooth probability density curve"><svg id="art"></svg></div>
+</div></section>
+
+<section class="band alt" id="research"><div class="wrap">
+ <h2>Research</h2>
+ <p class="lede">I work mainly with models and simulation rather than field data collection. Most of my projects use stochastic methods on problems from the Fergana Valley.</p>
+ <div class="grid">
+  <div class="topic"><h3>Stochastic groundwater modelling</h3><p>Kriging, Monte Carlo ensembles and transient flow models on a Fergana Valley monitoring dataset of about 2,300 wells from 2015–2023.</p></div>
+  <div class="topic"><h3>Probabilistic urban suitability</h3><p>Chained Monte Carlo frameworks that produce probabilistic construction-suitability zoning maps for Fergana City.</p></div>
+  <div class="topic"><h3>Mathematical biology</h3><p>Geometric and probabilistic models of orb-web architecture and prey-capture efficiency.</p></div>
+  <div class="topic"><h3>Transport and fair fares</h3><p>Monte Carlo indices of transit smoothness, mode-choice dynamics and how users respond to public transport prices.</p></div>
+  <div class="topic"><h3>Information theory of Uzbek</h3><p>Entropy, redundancy and optimal coding in Uzbek-language texts.</p></div>
+  <div class="topic"><h3>Demography</h3><p>Sex ratio at birth in Uzbekistan and forecasts of the age gap between men and women at first marriage.</p></div>
+ </div>
+</div></section>
+
+<section class="band" id="publications"><div class="wrap">
+ <h2>Publications</h2>
+ <p class="lede">Books, articles and work in progress.</p>
+ <div class="filters" role="group" aria-label="Filter publications">
+  <button class="chip" data-f="all" aria-pressed="true">All</button>
+  <button class="chip" data-f="book" aria-pressed="false">Books</button>
+  <button class="chip" data-f="prep" aria-pressed="false">In preparation</button>
+  <button class="chip" data-f="wip" aria-pressed="false">Ongoing projects</button>
+ </div>
+ <ul class="pubs" id="pubs"></ul>
+ <p class="small">Add years, co-authors, DOIs and journal names as papers are published.</p>
+</div></section>
+
+<section class="band alt" id="teaching"><div class="wrap">
+ <h2>Teaching</h2>
+ <p class="lede">Undergraduate courses at Fergana State Technical University.</p>
+ <table class="stack">
+  <thead><tr><th>Course</th><th>Students</th><th>Format</th><th>Language</th></tr></thead>
+  <tbody>
+   <tr><td>Probability and Statistics</td><td>Undergraduate</td><td>Lectures and practicals</td><td>Uzbek / English</td></tr>
+   <tr><td>Linear Algebra</td><td>Undergraduate</td><td>Lectures and practicals</td><td>Uzbek</td></tr>
+   <tr><td>Higher Mathematics</td><td>Undergraduate</td><td>Lectures and practicals</td><td>Uzbek</td></tr>
+   <tr><td>Discrete Structures</td><td>2nd-year Cybersecurity</td><td>Practical classes</td><td>Uzbek</td></tr>
+  </tbody>
+ </table>
+</div></section>
+
+<section class="band" id="materials"><div class="wrap">
+ <h2>Lessons and materials</h2>
+ <p class="lede">Lesson plans, handouts and problem sets for my students. Files will be linked here as they are uploaded.</p>
+ <input class="search" id="q" type="search" placeholder="Search materials, e.g. graph, matrix, Bayes" aria-label="Search materials">
+ <div class="mat" id="mat"></div>
+ <p class="small" id="none" hidden>No materials match that search.</p>
+ <p class="small">Lesson titles are sample entries. Replace them with your real lesson list.</p>
+</div></section>
+
+<section class="band alt" id="cv"><div class="wrap">
+ <h2>Curriculum vitae</h2>
+ <div class="cv">
+  <div><h3>Positions</h3>
+   <ul class="tl">
+    <li><div class="d">Feb 2025 – present</div><div class="w">Assistant Professor (part-time)</div>Fergana State Technical University</li>
+    <li><div class="d">2023 – present</div><div class="w">International Coordinator</div>International Office, Fergana State Technical University: partnerships in 24 countries, Erasmus+ mobility, international accreditation</li>
+    <li><div class="d">2021 – 2022</div><div class="w">International Coordinator</div>Fergana Polytechnic Institute</li>
+   </ul>
+  </div>
+  <div><h3>Education</h3>
+   <ul class="tl">
+    <li><div class="d">2022 – 2024</div><div class="w">MSc Mathematics</div>University of Sussex, United Kingdom</li>
+    <li><div class="d">2017 – 2021</div><div class="w">BSc Mechanical Engineering</div>Fergana Polytechnic Institute, Uzbekistan</li>
+   </ul>
+   <h3 style="margin-top:12px">Skills</h3>
+   <p class="small" style="font-size:15px">Monte Carlo simulation, geostatistics (kriging), differential equations, Python, LaTeX. Uzbek (native), English (B2), Russian (B1).</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="band contact" id="contact"><div class="wrap">
+ <h2>Contact</h2>
+ <p style="max-width:60ch;margin:0">I welcome questions from students, research collaborations and partnership enquiries.</p>
+ <div class="cgrid">
+  <div><b>University email</b><a href="mailto:mukhibilloh@fstu.uz">mukhibilloh@fstu.uz</a><button class="copy" data-c="mukhibilloh@fstu.uz">Copy</button></div>
+  <div><b>Personal email</b><a href="mailto:mmabdurakhimov@gmail.com">mmabdurakhimov@gmail.com</a><button class="copy" data-c="mmabdurakhimov@gmail.com">Copy</button></div>
+  <div><b>Office</b>Room 1-203, Main building, FSTU<br>86 Fergana st., Fergana 150107, Uzbekistan</div>
+ </div>
+</div></section>
+</main>
+<footer>© 2026 Mukhibilloh Abdurakhimov · mukhibilloh.uz</footer>
+
+<script>
+{
+const pubs=[
+ {y:"Book",t:"Probability and Statistics for Business Students",m:"Textbook, co-authored.",k:"book",l:"Textbook"},
+ {y:"2026",t:"Mathematical Modelling of Spider-Web Architecture and Prey-Capture Efficiency: A Probabilistic and Geometric Approach",m:"Theoretical and computational study. To be submitted to Bulletin of Mathematical Biology.",k:"prep",l:"In preparation"},
+ {y:"2026",t:"Fergana Valley groundwater-level monitoring dataset, 2015–2023",m:"Data descriptor and companion stochastic modelling papers (kriging, Monte Carlo ensembles, transient flow).",k:"prep",l:"In preparation"},
+ {y:"2026",t:"Probabilistic construction-suitability zoning for Fergana City",m:"Chained Monte Carlo framework based on urban well data.",k:"wip",l:"Ongoing"},
+ {y:"2026",t:"Information-Theoretic Analysis of Uzbek Texts: Entropy, Redundancy and Optimal Coding",m:"Planned article.",k:"wip",l:"Ongoing"},
+ {y:"2026",t:"Fair public transport fares and the user–price relationship in Uzbekistan",m:"Planned article.",k:"wip",l:"Ongoing"}
+];
+const list=document.getElementById('pubs');
+const renderPubs=f=>{list.innerHTML=pubs.filter(p=>f==='all'||p.k===f).map(p=>`<li><div class="yr">${p.y}</div><div><div class="t">${p.t}</div><div class="m">${p.m}</div><span class="tag ${p.k}">${p.l}</span></div></li>`).join('')};
+renderPubs('all');
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b?'true':'false'));renderPubs(b.dataset.f)}));
+
+const courses=[
+ {c:"Probability and Statistics",s:"Undergraduate",items:[["Random events and probability","Lecture notes"],["Conditional probability and Bayes' theorem","Problem set"],["Discrete distributions","Handout"],["Normal distribution and the CLT","Lecture notes"],["Confidence intervals and hypothesis tests","Problem set"]]},
+ {c:"Linear Algebra",s:"Undergraduate",items:[["Matrices and determinants","Lecture notes"],["Systems of linear equations","Problem set"],["Vector spaces and bases","Handout"],["Eigenvalues and eigenvectors","Problem set"]]},
+ {c:"Higher Mathematics",s:"Undergraduate",items:[["Limits and continuity","Lecture notes"],["Derivatives and applications","Problem set"],["Integrals","Handout"],["Differential equations","Problem set"]]},
+ {c:"Discrete Structures",s:"2nd-year Cybersecurity · practical classes",items:[["Sets, relations and functions","Amaliy mashg'ulot"],["Logic and proofs","Amaliy mashg'ulot"],["Combinatorics","Amaliy mashg'ulot"],["Graphs and trees","Amaliy mashg'ulot"],["Boolean algebra","Amaliy mashg'ulot"]]}
+];
+const mat=document.getElementById('mat'),none=document.getElementById('none');
+const renderMat=q=>{q=q.trim().toLowerCase();let n=0;
+ mat.innerHTML=courses.map(c=>{const it=c.items.filter(i=>!q||(c.c+' '+i[0]+' '+i[1]).toLowerCase().includes(q));n+=it.length;if(!it.length)return'';
+  return`<div class="course"><h3>${c.c}</h3><div class="small">${c.s}</div><ul>${it.map(i=>`<li><span>${i[0]}</span><em>${i[1]} · coming soon</em></li>`).join('')}</ul></div>`}).join('');
+ none.hidden=n>0};
+renderMat('');
+document.getElementById('q').addEventListener('input',e=>renderMat(e.target.value));
+
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText(b.dataset.c);b.textContent='Copied'}catch(e){b.textContent='Select to copy'}
+ setTimeout(()=>b.textContent='Copy',1800)}));
+
+/* hero picture: Monte Carlo histogram woven as ikat stripes */
+const s=document.getElementById('art');
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};
+const gauss=()=>{let u=0,v=0;while(!u)u=rnd();while(!v)v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+const N=1600,samples=[];for(let i=0;i<N;i++)samples.push(gauss());
+const draw=()=>{
+ const W=s.clientWidth,H=s.clientHeight;if(!W||!H)return;
+ const bins=W<420?17:25,lo=-3.4,hi=3.4,bw=(hi-lo)/bins,counts=new Array(bins).fill(0);
+ samples.forEach(x=>{const k=Math.floor((x-lo)/bw);if(k>=0&&k<bins)counts[k]++});
+ const padX=W*0.07,base=H*0.84,top=H*0.12,plotW=W-2*padX;
+ const maxD=1/Math.sqrt(2*Math.PI),scale=(base-top)/maxD;
+ const X=x=>padX+(x-lo)/(hi-lo)*plotW,Y=d=>base-d*scale;
+ const cols=['#d42a4c','#f2b134','#4fd1c5','#ecebf7','#8f92ff'];
+ let out=`<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f31a0"/><stop offset="1" stop-color="#191a5e"/></linearGradient></defs><rect width="${W}" height="${H}" fill="url(#g)"/>`;
+ counts.forEach((c,i)=>{
+  const d=c/(N*bw),x=X(lo+i*bw),w=plotW/bins,h=d*scale,col=cols[i%cols.length];
+  const gap=Math.max(1.5,w*0.12);
+  out+=`<rect x="${x+gap/2}" y="${base-h}" width="${w-gap}" height="${h}" rx="${Math.min(4,w/4)}" fill="${col}" opacity=".9"/>`;
+  for(let yy=base-h+10;yy<base-6;yy+=18){out+=`<path d="M${x+w/2-(w-gap)/2+2} ${yy} L${x+w/2} ${yy-6} L${x+w/2+(w-gap)/2-2} ${yy}" fill="none" stroke="#191a5e" stroke-opacity=".35" stroke-width="2"/>`}
+ });
+ let p='';for(let i=0;i<=120;i++){const x=lo+i*(hi-lo)/120,d=Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);p+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(d).toFixed(1)}
+ out+=`<path d="${p}" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>`;
+ out+=`<line x1="${padX}" y1="${base}" x2="${W-padX}" y2="${base}" stroke="#ecebf7" stroke-opacity=".5"/>`;
+ for(let i=0;i<70;i++){const x=samples[i*11]; if(x<lo||x>hi)continue; out+=`<circle cx="${X(x).toFixed(1)}" cy="${(base+10+rnd()*(H-base-18)).toFixed(1)}" r="2.6" fill="#ecebf7" opacity=".75"/>`}
+ if(W>=420)out+=`<text x="${W-padX}" y="${top+4}" text-anchor="end" fill="#ecebf7" font-family="Newsreader,serif" font-size="20" font-style="italic">f(x) = e<tspan dy="-8" font-size="13">−x²/2</tspan><tspan dy="8"> / √2π</tspan></text>`;
+ s.innerHTML=out};
+const ro=new ResizeObserver(draw);ro.observe(s);
+}
+</script>
+</body>
+</html>
